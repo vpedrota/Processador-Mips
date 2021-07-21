@@ -1,0 +1,1079 @@
+Analysis & Synthesis report for mipsProcessor
+Tue Jul 20 11:58:23 2021
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Added for RAM Pass-Through Logic
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for Registers:comb_4|altsyncram:register_rtl_0|altsyncram_26e1:auto_generated
+ 16. Source assignments for Registers:comb_4|altsyncram:register_rtl_1|altsyncram_26e1:auto_generated
+ 17. Parameter Settings for User Entity Instance: ClockManager:clock
+ 18. Parameter Settings for User Entity Instance: ROM:Instruction_memory
+ 19. Parameter Settings for User Entity Instance: MUX:Rgst
+ 20. Parameter Settings for User Entity Instance: MUX:Alu_in
+ 21. Parameter Settings for User Entity Instance: RAM:DataMemory
+ 22. Parameter Settings for User Entity Instance: MUX:AluOut
+ 23. Parameter Settings for User Entity Instance: MUX:Branchs
+ 24. Parameter Settings for User Entity Instance: MUX:jump
+ 25. Parameter Settings for Inferred Entity Instance: Registers:comb_4|altsyncram:register_rtl_0
+ 26. Parameter Settings for Inferred Entity Instance: Registers:comb_4|altsyncram:register_rtl_1
+ 27. altsyncram Parameter Settings by Entity Instance
+ 28. Port Connectivity Checks: "ALU_Control:ALUc"
+ 29. Port Connectivity Checks: "Registers:comb_4"
+ 30. Port Connectivity Checks: "MUX:Rgst"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+ 34. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Jul 20 11:58:23 2021       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                      ; mipsProcessor                               ;
+; Top-level Entity Name              ; mipsProcessor                               ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 342                                         ;
+;     Total combinational functions  ; 303                                         ;
+;     Dedicated logic registers      ; 109                                         ;
+; Total registers                    ; 109                                         ;
+; Total pins                         ; 295                                         ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 256                                         ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; mipsProcessor      ; mipsProcessor      ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; Program_Counter.v                ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Program_Counter.v                  ;         ;
+; ROM.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/ROM.v                              ;         ;
+; Add_PC.v                         ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Add_PC.v                           ;         ;
+; Control.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Control.v                          ;         ;
+; Left2.v                          ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Left2.v                            ;         ;
+; Left_26.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Left_26.v                          ;         ;
+; Registers.v                      ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Registers.v                        ;         ;
+; MUX.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/MUX.v                              ;         ;
+; Sifn_ep.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Sifn_ep.v                          ;         ;
+; AluControl.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/AluControl.v                       ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/ALU.v                              ;         ;
+; Alu_add.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Alu_add.v                          ;         ;
+; RAM.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/RAM.v                              ;         ;
+; mipsProcessor.v                  ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v                    ;         ;
+; single_port_rom_init.txt         ; yes             ; User File                    ; C:/Users/Victor Pedrota/Documents/projeto/single_port_rom_init.txt           ;         ;
+; Clock.v                          ; yes             ; User Verilog HDL File        ; C:/Users/Victor Pedrota/Documents/projeto/Clock.v                            ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal191.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_26e1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Victor Pedrota/Documents/projeto/db/altsyncram_26e1.tdf             ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimated Total logic elements              ; 342                           ;
+;                                             ;                               ;
+; Total combinational functions               ; 303                           ;
+; Logic element usage by number of LUT inputs ;                               ;
+;     -- 4 input functions                    ; 103                           ;
+;     -- 3 input functions                    ; 133                           ;
+;     -- <=2 input functions                  ; 67                            ;
+;                                             ;                               ;
+; Logic elements by mode                      ;                               ;
+;     -- normal mode                          ; 211                           ;
+;     -- arithmetic mode                      ; 92                            ;
+;                                             ;                               ;
+; Total registers                             ; 109                           ;
+;     -- Dedicated logic registers            ; 109                           ;
+;     -- I/O registers                        ; 0                             ;
+;                                             ;                               ;
+; I/O pins                                    ; 295                           ;
+; Total memory bits                           ; 256                           ;
+;                                             ;                               ;
+; Embedded Multiplier 9-bit elements          ; 0                             ;
+;                                             ;                               ;
+; Maximum fan-out node                        ; ClockManager:clock|clk_output ;
+; Maximum fan-out                             ; 174                           ;
+; Total fan-out                               ; 2076                          ;
+; Average fan-out                             ; 1.95                          ;
++---------------------------------------------+-------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                      ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+-----------------+--------------+
+; |mipsProcessor                            ; 303 (1)             ; 109 (0)                   ; 256         ; 0            ; 0       ; 0         ; 295  ; 0            ; |mipsProcessor                                                                           ; mipsProcessor   ; work         ;
+;    |ALU:ULA|                              ; 162 (162)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|ALU:ULA                                                                   ; ALU             ; work         ;
+;    |ALU_Control:ALUc|                     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|ALU_Control:ALUc                                                          ; ALU_Control     ; work         ;
+;    |Add_PC:NextAdress|                    ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Add_PC:NextAdress                                                         ; Add_PC          ; work         ;
+;    |ClockManager:clock|                   ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|ClockManager:clock                                                        ; ClockManager    ; work         ;
+;    |MUX:Alu_in|                           ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|MUX:Alu_in                                                                ; MUX             ; work         ;
+;    |MUX:Rgst|                             ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|MUX:Rgst                                                                  ; MUX             ; work         ;
+;    |PC:program_counter|                   ; 0 (0)               ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|PC:program_counter                                                        ; PC              ; work         ;
+;    |ROM:Instruction_memory|               ; 7 (7)               ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|ROM:Instruction_memory                                                    ; ROM             ; work         ;
+;    |Registers:comb_4|                     ; 66 (66)             ; 72 (72)                   ; 256         ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Registers:comb_4                                                          ; Registers       ; work         ;
+;       |altsyncram:register_rtl_0|         ; 0 (0)               ; 0 (0)                     ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Registers:comb_4|altsyncram:register_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_26e1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Registers:comb_4|altsyncram:register_rtl_0|altsyncram_26e1:auto_generated ; altsyncram_26e1 ; work         ;
+;       |altsyncram:register_rtl_1|         ; 0 (0)               ; 0 (0)                     ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Registers:comb_4|altsyncram:register_rtl_1                                ; altsyncram      ; work         ;
+;          |altsyncram_26e1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 128         ; 0            ; 0       ; 0         ; 0    ; 0            ; |mipsProcessor|Registers:comb_4|altsyncram:register_rtl_1|altsyncram_26e1:auto_generated ; altsyncram_26e1 ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                         ;
++--------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                 ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++--------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Registers:comb_4|altsyncram:register_rtl_0|altsyncram_26e1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024 ; None ;
+; Registers:comb_4|altsyncram:register_rtl_1|altsyncram_26e1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024 ; None ;
++--------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                             ;
++----------------------------------------------------------------+-----------------------------------------------+
+; Register name                                                  ; Reason for Removal                            ;
++----------------------------------------------------------------+-----------------------------------------------+
+; PC:program_counter|Address_out[1]                              ; Merged with PC:program_counter|Address_out[0] ;
+; PC:program_counter|Address_out[0]                              ; Stuck at GND due to stuck port data_in        ;
+; ROM:Instruction_memory|q[3,4,6..10,13..15,17..20,22..28,30,31] ; Stuck at GND due to stuck port data_in        ;
+; RAM:DataMemory|addr_reg[2]                                     ; Stuck at GND due to stuck port clock          ;
+; Registers:comb_4|register_rtl_0_bypass[4..10]                  ; Stuck at GND due to stuck port data_in        ;
+; Registers:comb_4|register_rtl_1_bypass[4..10]                  ; Stuck at GND due to stuck port data_in        ;
+; ROM:Instruction_memory|q[11,12]                                ; Merged with ROM:Instruction_memory|q[5]       ;
+; ROM:Instruction_memory|q[2]                                    ; Merged with ROM:Instruction_memory|q[1]       ;
+; RAM:DataMemory|ram~0                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~1                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~2                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~3                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~4                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~5                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~6                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~7                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~8                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~9                                           ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~10                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~11                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~12                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~13                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~14                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~15                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~16                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~17                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~18                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~19                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~20                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~21                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~22                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~23                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~24                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~25                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~26                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~27                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~28                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~29                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~30                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~31                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~32                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~33                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~34                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~35                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~36                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~37                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~38                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~39                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~40                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~41                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~42                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~43                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~44                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~45                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~46                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~47                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~48                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~49                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~50                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~51                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~52                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~53                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~54                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~55                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~56                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~57                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~58                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~59                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~60                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~61                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~62                                          ; Stuck at GND due to stuck port clock          ;
+; RAM:DataMemory|ram~63                                          ; Stuck at GND due to stuck port clock          ;
+; ClockManager:clock|count[31]                                   ; Stuck at GND due to stuck port data_in        ;
+; ClockManager:clock|count[0..30]                                ; Lost fanout                                   ;
+; Total Number of Removed Registers = 139                        ;                                               ;
++----------------------------------------------------------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                           ;
++------------------------------+---------------------------+--------------------------------------------+
+; Register name                ; Reason for Removal        ; Registers Removed due to This Register     ;
++------------------------------+---------------------------+--------------------------------------------+
+; ROM:Instruction_memory|q[31] ; Stuck at GND              ; Registers:comb_4|register_rtl_0_bypass[5], ;
+;                              ; due to stuck port data_in ; Registers:comb_4|register_rtl_0_bypass[7], ;
+;                              ;                           ; Registers:comb_4|register_rtl_0_bypass[9], ;
+;                              ;                           ; Registers:comb_4|register_rtl_1_bypass[5], ;
+;                              ;                           ; Registers:comb_4|register_rtl_1_bypass[7], ;
+;                              ;                           ; Registers:comb_4|register_rtl_1_bypass[9]  ;
+; ROM:Instruction_memory|q[4]  ; Stuck at GND              ; RAM:DataMemory|addr_reg[2]                 ;
+;                              ; due to stuck port data_in ;                                            ;
++------------------------------+---------------------------+--------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 109   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 30    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; ClockManager:clock|clk_output          ; 174     ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                   ;
++--------------------------------------------+---------------------------------+
+; Register Name                              ; RAM Name                        ;
++--------------------------------------------+---------------------------------+
+; Registers:comb_4|register_rtl_0_bypass[0]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[1]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[2]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[3]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[4]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[5]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[6]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[7]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[8]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[9]  ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[10] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[11] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[12] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[13] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[14] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[15] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[16] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[17] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[18] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[19] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[20] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[21] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[22] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[23] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[24] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[25] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[26] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[27] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[28] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[29] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[30] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[31] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[32] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[33] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[34] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[35] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[36] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[37] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[38] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[39] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[40] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[41] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_0_bypass[42] ; Registers:comb_4|register_rtl_0 ;
+; Registers:comb_4|register_rtl_1_bypass[0]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[1]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[2]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[3]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[4]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[5]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[6]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[7]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[8]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[9]  ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[10] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[11] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[12] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[13] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[14] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[15] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[16] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[17] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[18] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[19] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[20] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[21] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[22] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[23] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[24] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[25] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[26] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[27] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[28] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[29] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[30] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[31] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[32] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[33] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[34] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[35] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[36] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[37] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[38] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[39] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[40] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[41] ; Registers:comb_4|register_rtl_1 ;
+; Registers:comb_4|register_rtl_1_bypass[42] ; Registers:comb_4|register_rtl_1 ;
++--------------------------------------------+---------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |mipsProcessor|ClockManager:clock|count[1] ;
+; 16:1               ; 31 bits   ; 310 LEs       ; 124 LEs              ; 186 LEs                ; No         ; |mipsProcessor|ALU:ULA|Mux29               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Source assignments for Registers:comb_4|altsyncram:register_rtl_0|altsyncram_26e1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------+
+; Assignment                      ; Value              ; From ; To                                 ;
++---------------------------------+--------------------+------+------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                  ;
++---------------------------------+--------------------+------+------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Source assignments for Registers:comb_4|altsyncram:register_rtl_1|altsyncram_26e1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------+
+; Assignment                      ; Value              ; From ; To                                 ;
++---------------------------------+--------------------+------+------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                  ;
++---------------------------------+--------------------+------+------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ClockManager:clock ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; N_COUNT        ; 0     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ROM:Instruction_memory ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                             ;
+; ADDR_WIDTH     ; 5     ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX:Rgst ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; N              ; 6     ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX:Alu_in ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; N              ; 32    ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: RAM:DataMemory ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                     ;
+; ADDR_WIDTH     ; 32    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX:AluOut ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; N              ; 32    ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX:Branchs ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; N              ; 32    ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: MUX:jump ;
++----------------+-------+------------------------------+
+; Parameter Name ; Value ; Type                         ;
++----------------+-------+------------------------------+
+; N              ; 32    ; Signed Integer               ;
++----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Registers:comb_4|altsyncram:register_rtl_0 ;
++------------------------------------+----------------------+---------------------------------+
+; Parameter Name                     ; Value                ; Type                            ;
++------------------------------------+----------------------+---------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                         ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                    ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                  ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                         ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                         ;
+; WIDTH_A                            ; 32                   ; Untyped                         ;
+; WIDTHAD_A                          ; 5                    ; Untyped                         ;
+; NUMWORDS_A                         ; 32                   ; Untyped                         ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                         ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                         ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WIDTH_B                            ; 32                   ; Untyped                         ;
+; WIDTHAD_B                          ; 5                    ; Untyped                         ;
+; NUMWORDS_B                         ; 32                   ; Untyped                         ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                         ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                         ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                         ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                         ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                         ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                         ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                         ;
+; BYTE_SIZE                          ; 8                    ; Untyped                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; INIT_FILE                          ; Mif2.mif             ; Untyped                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                         ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                         ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                         ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                         ;
+; CBXI_PARAMETER                     ; altsyncram_26e1      ; Untyped                         ;
++------------------------------------+----------------------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Registers:comb_4|altsyncram:register_rtl_1 ;
++------------------------------------+----------------------+---------------------------------+
+; Parameter Name                     ; Value                ; Type                            ;
++------------------------------------+----------------------+---------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                         ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                    ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                  ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                         ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                         ;
+; WIDTH_A                            ; 32                   ; Untyped                         ;
+; WIDTHAD_A                          ; 5                    ; Untyped                         ;
+; NUMWORDS_A                         ; 32                   ; Untyped                         ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                         ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                         ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                         ;
+; WIDTH_B                            ; 32                   ; Untyped                         ;
+; WIDTHAD_B                          ; 5                    ; Untyped                         ;
+; NUMWORDS_B                         ; 32                   ; Untyped                         ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                         ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                         ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                         ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                         ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                         ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                         ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                         ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                         ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                         ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                         ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                         ;
+; BYTE_SIZE                          ; 8                    ; Untyped                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                         ;
+; INIT_FILE                          ; Mif2.mif             ; Untyped                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                         ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                         ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                         ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                         ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                         ;
+; CBXI_PARAMETER                     ; altsyncram_26e1      ; Untyped                         ;
++------------------------------------+----------------------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                       ;
++-------------------------------------------+--------------------------------------------+
+; Name                                      ; Value                                      ;
++-------------------------------------------+--------------------------------------------+
+; Number of entity instances                ; 2                                          ;
+; Entity Instance                           ; Registers:comb_4|altsyncram:register_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                  ;
+;     -- WIDTH_A                            ; 32                                         ;
+;     -- NUMWORDS_A                         ; 32                                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                               ;
+;     -- WIDTH_B                            ; 32                                         ;
+;     -- NUMWORDS_B                         ; 32                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                     ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                       ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                  ;
+; Entity Instance                           ; Registers:comb_4|altsyncram:register_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                  ;
+;     -- WIDTH_A                            ; 32                                         ;
+;     -- NUMWORDS_A                         ; 32                                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                               ;
+;     -- WIDTH_B                            ; 32                                         ;
+;     -- NUMWORDS_B                         ; 32                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                     ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                       ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                  ;
++-------------------------------------------+--------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_Control:ALUc"                                                                                                                             ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                       ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; ALUop ; Input ; Warning  ; Input port expression (2 bits) is smaller than the input port (3 bits) it drives.  Extra input bit(s) "ALUop[2..2]" will be connected to GND. ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Registers:comb_4"                                                                                                                                                                          ;
++-----------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                                                                                                                                          ;
++-----------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Write_registers ; Input ; Warning  ; Input port expression (6 bits) is wider than the input port (5 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-----------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MUX:Rgst"                                                                                                                                            ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                       ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; data1       ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "data1[5..5]" will be connected to GND. ;
+; data2       ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "data2[5..5]" will be connected to GND. ;
+; data_out[5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                           ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 295                         ;
+; cycloneiii_ff         ; 109                         ;
+;     CLR               ; 30                          ;
+;     plain             ; 79                          ;
+; cycloneiii_lcell_comb ; 306                         ;
+;     arith             ; 92                          ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 62                          ;
+;     normal            ; 214                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 35                          ;
+;         3 data inputs ; 71                          ;
+;         4 data inputs ; 103                         ;
+; cycloneiii_ram_block  ; 64                          ;
+;                       ;                             ;
+; Max LUT depth         ; 8.10                        ;
+; Average LUT depth     ; 5.19                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Tue Jul 20 11:58:10 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mipsProcessor -c mipsProcessor
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file program_counter.v
+    Info (12023): Found entity 1: PC File: C:/Users/Victor Pedrota/Documents/projeto/Program_Counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rom.v
+    Info (12023): Found entity 1: ROM File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file add_pc.v
+    Info (12023): Found entity 1: Add_PC File: C:/Users/Victor Pedrota/Documents/projeto/Add_PC.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file control.v
+    Info (12023): Found entity 1: Control_Unit File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file left2.v
+    Info (12023): Found entity 1: Left2 File: C:/Users/Victor Pedrota/Documents/projeto/Left2.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file left_26.v
+    Info (12023): Found entity 1: Left2_26 File: C:/Users/Victor Pedrota/Documents/projeto/Left_26.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file registers.v
+    Info (12023): Found entity 1: Registers File: C:/Users/Victor Pedrota/Documents/projeto/Registers.v Line: 1
+Warning (12090): Entity "MUX" obtained from "MUX.v" instead of from Quartus Prime megafunction library File: C:/Users/Victor Pedrota/Documents/projeto/MUX.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux.v
+    Info (12023): Found entity 1: MUX File: C:/Users/Victor Pedrota/Documents/projeto/MUX.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sifn_ep.v
+    Info (12023): Found entity 1: sign_ep File: C:/Users/Victor Pedrota/Documents/projeto/Sifn_ep.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alucontrol.v
+    Info (12023): Found entity 1: ALU_Control File: C:/Users/Victor Pedrota/Documents/projeto/AluControl.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU File: C:/Users/Victor Pedrota/Documents/projeto/ALU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu_add.v
+    Info (12023): Found entity 1: ALU_Add_32 File: C:/Users/Victor Pedrota/Documents/projeto/Alu_add.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ram.v
+    Info (12023): Found entity 1: RAM File: C:/Users/Victor Pedrota/Documents/projeto/RAM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mipsprocessor.v
+    Info (12023): Found entity 1: mipsProcessor File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock.v
+    Info (12023): Found entity 1: ClockManager File: C:/Users/Victor Pedrota/Documents/projeto/Clock.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at mipsProcessor.v(38): instance has no name File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 38
+Critical Warning (10846): Verilog HDL Instantiation warning at mipsProcessor.v(45): instance has no name File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 45
+Critical Warning (10846): Verilog HDL Instantiation warning at mipsProcessor.v(49): instance has no name File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 49
+Info (12127): Elaborating entity "mipsProcessor" for the top level hierarchy
+Info (12128): Elaborating entity "ClockManager" for hierarchy "ClockManager:clock" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 32
+Info (12128): Elaborating entity "PC" for hierarchy "PC:program_counter" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 33
+Info (12128): Elaborating entity "Add_PC" for hierarchy "Add_PC:NextAdress" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 34
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:Instruction_memory" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 35
+Warning (10850): Verilog HDL warning at ROM.v(14): number of words (3) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 14
+Warning (10030): Net "rom.data_a" at ROM.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 10
+Warning (10030): Net "rom.waddr_a" at ROM.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 10
+Warning (10030): Net "rom.we_a" at ROM.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 10
+Info (12128): Elaborating entity "Control_Unit" for hierarchy "Control_Unit:UC" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 36
+Warning (10230): Verilog HDL assignment warning at Control.v(19): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 19
+Warning (10230): Verilog HDL assignment warning at Control.v(29): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 29
+Warning (10230): Verilog HDL assignment warning at Control.v(39): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 39
+Warning (10230): Verilog HDL assignment warning at Control.v(49): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 49
+Warning (10230): Verilog HDL assignment warning at Control.v(58): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 58
+Warning (10230): Verilog HDL assignment warning at Control.v(67): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 67
+Warning (10230): Verilog HDL assignment warning at Control.v(75): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 75
+Warning (10230): Verilog HDL assignment warning at Control.v(83): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 83
+Warning (10230): Verilog HDL assignment warning at Control.v(91): truncated value with size 3 to match size of target (2) File: C:/Users/Victor Pedrota/Documents/projeto/Control.v Line: 91
+Info (12128): Elaborating entity "MUX" for hierarchy "MUX:Rgst" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 37
+Info (12128): Elaborating entity "Registers" for hierarchy "Registers:comb_4" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 38
+Info (12128): Elaborating entity "sign_ep" for hierarchy "sign_ep:SignalExtend" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 39
+Info (12128): Elaborating entity "MUX" for hierarchy "MUX:Alu_in" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 40
+Info (12128): Elaborating entity "ALU_Control" for hierarchy "ALU_Control:ALUc" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 41
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:ULA" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 42
+Warning (10272): Verilog HDL Case Statement warning at ALU.v(15): case item expression covers a value already covered by a previous case item File: C:/Users/Victor Pedrota/Documents/projeto/ALU.v Line: 15
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:DataMemory" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 43
+Warning (10259): Verilog HDL error at RAM.v(10): constant value overflow File: C:/Users/Victor Pedrota/Documents/projeto/RAM.v Line: 10
+Info (12128): Elaborating entity "Left2" for hierarchy "Left2:comb_5" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 45
+Info (12128): Elaborating entity "ALU_Add_32" for hierarchy "ALU_Add_32:FinalAdress" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 46
+Info (12128): Elaborating entity "Left2_26" for hierarchy "Left2_26:comb_7" File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 49
+Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/Victor Pedrota/Documents/projeto/Mif2.mif -- setting all initial values to 0
+Warning (276020): Inferred RAM node "Registers:comb_4|register_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "Registers:comb_4|register_rtl_1" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276004): RAM logic "RAM:DataMemory|ram" is uninferred due to inappropriate RAM size File: C:/Users/Victor Pedrota/Documents/projeto/RAM.v Line: 10
+    Info (276007): RAM logic "ROM:Instruction_memory|rom" is uninferred due to asynchronous read logic File: C:/Users/Victor Pedrota/Documents/projeto/ROM.v Line: 10
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/Victor Pedrota/Documents/projeto/db/mipsProcessor.ram0_ROM_16bd8.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Registers:comb_4|register_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to Mif2.mif
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Registers:comb_4|register_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to Mif2.mif
+Info (12130): Elaborated megafunction instantiation "Registers:comb_4|altsyncram:register_rtl_0"
+Info (12133): Instantiated megafunction "Registers:comb_4|altsyncram:register_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "Mif2.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_26e1.tdf
+    Info (12023): Found entity 1: altsyncram_26e1 File: C:/Users/Victor Pedrota/Documents/projeto/db/altsyncram_26e1.tdf Line: 28
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Address_in_PC[0]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Address_in_PC[1]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Address_out_PC[0]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Address_out_PC[1]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Address_Add_PC[0]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Address_Add_PC[1]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[3]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[4]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[6]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[7]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[8]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[9]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[10]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[13]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[14]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[15]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[17]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[18]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[19]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[20]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[22]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[23]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[24]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[25]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[26]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[27]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[28]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[30]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction[31]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[0]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[1]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[2]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[3]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[4]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[5]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[6]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[7]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[8]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[9]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[10]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[11]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[12]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[13]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[14]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[15]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[16]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[17]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[18]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[19]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[20]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[21]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[22]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[23]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[24]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[25]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[26]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[27]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[28]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[29]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[30]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "Read_Data_Mem[31]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[0]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[1]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[5]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[6]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[8]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[9]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[10]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[11]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[12]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[15]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[16]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[17]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[19]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[20]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[21]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[22]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[24]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[25]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[26]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "instruction_Left[27]" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 11
+    Warning (13410): Pin "RegWrite" is stuck at VCC File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 17
+    Warning (13410): Pin "MemWrite" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 17
+    Warning (13410): Pin "MemRead" is stuck at GND File: C:/Users/Victor Pedrota/Documents/projeto/mipsProcessor.v Line: 17
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 31 registers lost all their fanouts during netlist optimizations.
+Info (17036): Removed 3 MSB VCC or GND address nodes from RAM block "Registers:comb_4|altsyncram:register_rtl_1|altsyncram_26e1:auto_generated|ALTSYNCRAM" File: C:/Users/Victor Pedrota/Documents/projeto/db/altsyncram_26e1.tdf Line: 38
+Info (17036): Removed 3 MSB VCC or GND address nodes from RAM block "Registers:comb_4|altsyncram:register_rtl_0|altsyncram_26e1:auto_generated|ALTSYNCRAM" File: C:/Users/Victor Pedrota/Documents/projeto/db/altsyncram_26e1.tdf Line: 38
+Info (144001): Generated suppressed messages file C:/Users/Victor Pedrota/Documents/projeto/output_files/mipsProcessor.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 768 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 293 output pins
+    Info (21061): Implemented 409 logic cells
+    Info (21064): Implemented 64 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 110 warnings
+    Info: Peak virtual memory: 4778 megabytes
+    Info: Processing ended: Tue Jul 20 11:58:23 2021
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:23
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Victor Pedrota/Documents/projeto/output_files/mipsProcessor.map.smsg.
+
+
